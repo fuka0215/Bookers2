@@ -13,54 +13,65 @@
 
   <body>
     <header>
-        <span>
-          <%= link_to 'Bookers', root_path %>
-        </span>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to user_path(current_user.id) do %>
-            <span><i class="fa-solid fa-house"></i>Home</span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to users_path do %>
-            <span><i class="fa-solid fa-users"></i>Users</span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to books_path do %>
-            <span><i class="fa-solid fa-book-open"></i>Books</span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <span><i class="fa-solid fa-right-from-bracket"></i>Log out</span>
-          <% end %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to root_path do %>
-            <span><i class="fa-solid fa-house"></i>Home</span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to about_path do %>
-            <span><i class="fa-solid fa-link"></i>About</span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_user_registration_path do %>
-            <span><i class="fa-solid fa-user-plus"></i>Sign up</span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_user_session_path do %>
-            <span><i class="fa-solid fa-right-to-bracket"></i>Log in</span>
-          <% end %>
-        </li>
-      <% end %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <span>
+            <%= link_to 'Bookers', root_path, class: "navbar-brand" %>
+          </span>
+
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+            <li>
+              <%= link_to user_path(current_user.id), class: "nav-link text-light" do %>
+                <span><i class="fa-solid fa-house"></i>Home</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to users_path, class: "nav-link text-light" do %>
+                <span><i class="fa-solid fa-users"></i>Users</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to books_path, class: "nav-link text-light" do %>
+                <span><i class="fa-solid fa-book-open"></i>Books</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+                <span><i class="fa-solid fa-right-from-bracket"></i>Log out</span>
+              <% end %>
+            </li>
+            <% else %>
+            <li>
+              <%= link_to root_path, class: "nav-link text-light" do %>
+                <span><i class="fa-solid fa-house"></i>Home</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to about_path, class: "nav-link text-light" do %>
+                <span><i class="fa-solid fa-link"></i>About</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+                <span><i class="fa-solid fa-user-plus"></i>Sign up</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+                <span><i class="fa-solid fa-right-to-bracket"></i>Log in</span>
+              <% end %>
+            </li>
+            <% end %>
+          </ul>
+
+        </div>
+      </nav>
     </header>
-    <main>
+
+
+
+    <main class="my-3">
       <div>
         <% flash.each do |message_type, message| %>
           <div class="flash-message <%= message_type %>"><%= message %></div>
@@ -68,10 +79,12 @@
       </div>
     <%= yield %>
     </main>
+
+
     <footer>
-      <div>
-        <div>
-          <div>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
             <p>CopyRight Infratop.inc</p>
           </div>
         </div>
