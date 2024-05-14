@@ -71,13 +71,12 @@
 
 
 
-    <main class="my-3">
-      <div>
-        <% flash.each do |message_type, message| %>
-          <div class="flash-message <%= message_type %>"><%= message %></div>
-        <% end %>
+    <main>
+        <p id="notice"><%= flash[:notice] %></p>
+
+      <div class="container px-0">
+          <%= yield %>
       </div>
-    <%= yield %>
     </main>
 
 
